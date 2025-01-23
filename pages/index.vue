@@ -1,6 +1,7 @@
 <template>
+    <Header />
     <div>
-        Pagina Inicial
+        Página Inicial
     </div>
 </template>
 
@@ -8,6 +9,3 @@
 
 </script>
 
-<style lang="scss" scoped>
-
-</style>

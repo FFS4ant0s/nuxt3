@@ -2,6 +2,8 @@
     <div>
         Você está no vídeos de número {{ $route.params.id }}
     </div>
+    <VideoDetalhes />
+    <VideoControlePlay />
 </template>
 
 <script setup>
