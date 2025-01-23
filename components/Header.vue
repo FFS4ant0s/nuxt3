@@ -1,3 +1,3 @@
 <template>
-    <h1 style="background-color: aquamarine;">Header</h1>
+    <h1>Cabeçalho</h1>
 </template>

@@ -7,6 +7,9 @@
 </template>
 
 <script setup>
+definePageMeta({
+    layout: "exibicao",
+})
 
 const route = useRoute();
 
