@@ -10,4 +10,8 @@ export default defineNuxtConfig({
     baseURL: process.env.BASE_URL,
   },
   css: ["@/assets/css/main.css"],
+  modules: ["@pinia/nuxt"],
+  pinia: {
+    storesDirs: ["./stores/**"],
+  },
 });
