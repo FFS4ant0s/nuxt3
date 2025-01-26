@@ -2,12 +2,29 @@
     <div>
         Vídeos Favoritos
     </div>
+    <div class="videos">
+    <div v-for="video in favoritos" :key="video.id">
+      <h2>{{ video.descrição }}</h2>
+      <iframe>
+        width="550"
+        height="400"
+        :src="video.url"
+        title="YouTube video player"
+        frameborder="0"
+        </iframe>
+      <div>
+        <button @click="videoStore.deletarFavorito(video.id)">
+          Remover Favorito
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { useVideoStore } from '~/stores/video';
 
+
+const videoStore = useVideoStore();
+const { favoritos } = storeToRefs(videoStore);
 </script>
-
-<style lang="scss" scoped>
-
-</style>

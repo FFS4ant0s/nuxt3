@@ -1,15 +1,32 @@
 <template>
     <div>
-        Vídeos
+        Vídeo <NuxtLink to="/videos/favoritos">Favoritos</NuxtLink>
+    <div class="videos">
+    <div v-for="video in videos" :key="video.id">
+      <h2>{{ video.descrição }}</h2>
+      <p>{{ converteDataBrasil(video.data_postagem) }}</p>
+      <iframe
+        width="550"
+        height="400"
+        :src="video.url"
+        title="YouTube video player"
+        frameborder="0"
+      />
+      <div>
+        <button @click="adicionarFavorito(video)">Adicionar Favorito</button>
+      </div>
     </div>
+    </div>
+    </div>
+
 </template>
 
 <script setup lang="ts">
-import { useFavoritos } from '~/composables/states';
-import type { Video } from '~/interfaces/video';
-
-const favoritos = useFavoritos();
-
+/// <reference types="../../node_modules/.vue-global-types/vue_3.5_false.d.ts" />
+import type { Video } from "@/interfaces/video";
+import { useVideoStore } from "~/stores/video";
+// const favoritos = useFavoritos();
+const { adicionarFavorito } = useVideoStore();
 const videos: Video[] = [
   {
     id: 1,
@@ -36,9 +53,20 @@ const videos: Video[] = [
     data_postagem: "2023-10-05",
   },
 ];
-
+const converteDataBrasil = (dataAtual: string) => {
+  return new Date(dataAtual).toLocaleDateString("pt-BR");
+};
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.videos {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.videos button {
+  display: inline-block;
+}
 </style>

@@ -3,4 +3,4 @@ export interface Video {
     descrição: string;
     url: string;
     data_postagem: string;
-}
+  }
